@@ -12,7 +12,7 @@
     <div class="row my-3">
         <div class="col">
             <select wire:model='filterCategory' class="form-select w-auto">
-                <option value="">None</option>
+                <option value="">All Categories</option>
                 @foreach ($categories as $category)
                     <option value="{{ $category->id }}">
                         {{ $category->category }}</option>
@@ -24,7 +24,9 @@
         </div>
     </div>
     @if ($foods->isEmpty())
-        <h4>Foods data is empty!</h4>
+        <div class="text-center">
+            <h4>Data not found or empty!</h4>
+        </div>
     @else
         <table class="table table-striped">
             <thead class="table-dark">

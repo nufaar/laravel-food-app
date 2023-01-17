@@ -5,15 +5,17 @@ namespace App\Http\Livewire;
 use App\Models\Category;
 use App\Models\Food;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class FoodCreate extends Component
 {
+
     public $name;
     public $price;
     public $categoryId;
 
     protected $rules = [
-        'name' => 'required|min:3',
+        'name' => 'required|min:3|unique:food,name',
         'price' => 'required',
         'categoryId' => 'required',
     ];
@@ -34,6 +36,7 @@ class FoodCreate extends Component
             'category_id' => $this->categoryId,
             'price' => $this->price
         ]);
+
         redirect('/foods')->with('message', "Food $this->name was created!");
     }
 }

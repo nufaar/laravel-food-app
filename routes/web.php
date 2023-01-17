@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FoodController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,14 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::view('/foods', 'food');
-Route::get('/foods/create', [FoodController::class, 'create'])->name('foods.create');
-Route::get('/foods/edit/{id}', [FoodController::class, 'edit'])->name('foods.edit');
+Route::prefix('foods')->group(function () {
+    Route::view('/', 'foods.index');
+    Route::get('/create', [FoodController::class, 'create'])->name('foods.create');
+    Route::get('/edit/{id}', [FoodController::class, 'edit'])->name('foods.edit');
+});
+
+Route::prefix('categories')->group(function () {
+    Route::view('/', 'categories.index');
+    Route::get('/create', [CategoryController::class, 'create']);
+    Route::get('/edit/{id}', [CategoryController::class, 'edit']);
+});

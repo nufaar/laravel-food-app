@@ -9,12 +9,12 @@ class FoodController extends Controller
 {
     public function create()
     {
-        return view('food-create');
+        return view('foods.create');
     }
 
     public function edit($id)
     {
-        return view('food-update', [
+        return view('foods.update', [
             'food' => Food::find($id)
         ]);
     }
