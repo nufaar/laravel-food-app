@@ -15,7 +15,7 @@ class CreateFoodTable extends Migration
     {
         Schema::create('food', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id');
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->string('name');
             $table->integer('price');
             $table->timestamps();
