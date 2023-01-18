@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Composer;
 
 class CategoryController extends Controller
 {
@@ -14,8 +15,7 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
-        return view('categories.update', [
-            'category' => Category::find($id)
-        ]);
+        $category = Category::findOrFail($id);
+        return view('categories.update', compact('category'));
     }
 }

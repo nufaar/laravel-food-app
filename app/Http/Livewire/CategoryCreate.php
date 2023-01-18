@@ -26,6 +26,6 @@ class CategoryCreate extends Component
             'category' => $this->category,
         ]);
 
-        redirect('/categories')->with('message', "Category $this->category was created!");
+        redirect()->route('categories.index')->with('message', "Category $this->category was created!");
     }
 }

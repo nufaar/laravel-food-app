@@ -46,6 +46,6 @@ class FoodUpdate extends Component
             'category_id' => $this->categoryId,
             'price' => $this->price
         ]);
-        redirect('/foods')->with('message', "Food $oldName was updated!");
+        redirect()->route('foods.index')->with('message', "Food $oldName was updated!");
     }
 }

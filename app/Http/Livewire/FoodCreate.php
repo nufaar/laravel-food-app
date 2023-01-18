@@ -37,6 +37,6 @@ class FoodCreate extends Component
             'price' => $this->price
         ]);
 
-        redirect('/foods')->with('message', "Food $this->name was created!");
+        redirect()->route('foods.index')->with('message', "Food $this->name was created!");
     }
 }

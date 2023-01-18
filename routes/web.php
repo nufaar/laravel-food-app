@@ -19,14 +19,14 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::prefix('foods')->group(function () {
-    Route::view('/', 'foods.index');
-    Route::get('/create', [FoodController::class, 'create'])->name('foods.create');
-    Route::get('/edit/{id}', [FoodController::class, 'edit'])->name('foods.edit');
+Route::prefix('foods')->name('foods.')->group(function () {
+    Route::view('/', 'foods.index')->name('index');
+    Route::get('/create', [FoodController::class, 'create'])->name('create');
+    Route::get('/edit/{id}', [FoodController::class, 'edit'])->name('edit');
 });
 
-Route::prefix('categories')->group(function () {
-    Route::view('/', 'categories.index');
-    Route::get('/create', [CategoryController::class, 'create']);
-    Route::get('/edit/{id}', [CategoryController::class, 'edit']);
+Route::prefix('categories')->name('categories.')->group(function () {
+    Route::view('/', 'categories.index')->name('index');
+    Route::get('/create', [CategoryController::class, 'create'])->name('create');
+    Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('edit');
 });

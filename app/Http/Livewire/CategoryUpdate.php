@@ -36,6 +36,6 @@ class CategoryUpdate extends Component
             'category' => $this->category
         ]);
 
-        redirect('/categories')->with('message', "Category $oldCategory was updated!");
+        redirect()->route('categories.index')->with('message', "Category $oldCategory was updated!");
     }
 }
